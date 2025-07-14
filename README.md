@@ -1,5 +1,3 @@
-# expanding-cards
-A flexbox project built with HTML/CSS/JavaScript
+# Expanding Cards
 
-
-![](https://giphy.com/embed/YrLSdUkX5rlBeuMbJd)
+A flexbox project built with JavaScript.

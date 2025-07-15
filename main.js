@@ -17,6 +17,27 @@ panels.forEach((panel) => {
   });
 });
 
+// CURSOR
+document.addEventListener('DOMContentLoaded', () => {
+  // 1) create & inject
+  const cursor = document.createElement('div');
+  cursor.classList.add('cursor');
+  document.body.appendChild(cursor);
+
+  // 2) tell GSAP to center it via transform
+  gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+  // 3) move it on mousemove
+  window.addEventListener('mousemove', (e) => {
+    gsap.to(cursor, {
+      x: e.clientX,
+      y: e.clientY,
+      duration: 0.2,
+      ease: 'power2.out',
+    });
+  });
+});
+
 // 1) split into chars
 new SplitType('.glitch', { types: 'chars' });
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Climate+Crisis&family=Silkscreen:wght@400;700&display=swap');
 
 * {
   box-sizing: border-box;
@@ -13,6 +14,24 @@ body {
   height: 100vh;
   overflow: hidden;
   margin: 0;
+  background: #000;
+}
+
+.glitch {
+  position: relative;
+  font-family: 'Silkscreen', sans-serif;
+  font-size: clamp(4rem, 10vw, 12rem);
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ensure each letter is an inline-block and visible */
+.glitch .char {
+  display: inline-block;
+  clip-path: inset(0% 0% 0% 0%);
+  will-change: clip-path, transform;
 }
 
 .container {

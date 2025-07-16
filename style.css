@@ -11,7 +11,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   overflow: hidden;
   margin: 0;
   background: #000;
@@ -33,6 +33,105 @@ body {
   transform: translate(-50%, -50%); /* center the circle on the pointer */
 }
 
+#intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: all;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s ease;
+}
+
+#intro.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* .gradient-layer {
+  width: 200vw;
+  height: 200vh;
+  position: absolute;
+  top: -50vh;
+  left: -50vw;
+  background: radial-gradient(circle at 30% 30%, #fbb040, transparent 40%),
+    radial-gradient(circle at 70% 70%, #3ddad7, transparent 40%),
+    radial-gradient(circle at 50% 50%, #845ec2, transparent 40%);
+  filter: blur(100px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+  animation: hueShift 20s linear infinite;
+} */
+
+.gradient-layer {
+  /* replace your existing background with this */
+  width: 200vw;
+  height: 200vh;
+  position: absolute;
+  top: -50vh;
+  left: -50vw;
+  background: radial-gradient(
+      circle at var(--g1-x, 30%) var(--g1-y, 30%),
+      #fbb040,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at var(--g2-x, 70%) var(--g2-y, 70%),
+      #3ddad7,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at var(--g3-x, 50%) var(--g3-y, 50%),
+      #845ec2,
+      transparent 40%
+    );
+  /* rest of your styles… */
+  filter: blur(100px);
+  mix-blend-mode: screen;
+  animation: hueShift 20s linear infinite;
+}
+
+.noise-layer {
+  position: absolute;
+  inset: 0;
+  filter: url(#grain);
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.5; /* adjust */
+}
+
+/* optional hue shift */
+@keyframes hueShift {
+  0% {
+    filter: blur(100px) hue-rotate(0deg);
+  }
+  100% {
+    filter: blur(100px) hue-rotate(360deg);
+  }
+}
+
+#ripple {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  z-index: 10000; /* above gradient but below UI */
+}
+
 .glitch {
   position: relative;
   font-family: 'Silkscreen', sans-serif;
@@ -40,6 +139,8 @@ body {
   text-transform: uppercase;
   color: #fff;
   user-select: none;
+  margin: 0;
+  padding: 2rem 0;
 }
 
 /* ensure each letter is an inline-block and visible */
@@ -52,13 +153,13 @@ body {
 .container {
   display: flex;
   width: 90vw;
+  flex: 1;
 }
 
 .panel {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 80vh;
   color: #fff;
   flex: 0.5;
   margin: 10px;

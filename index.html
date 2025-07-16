@@ -3,56 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./style.css" />
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Sensorium</title>
   </head>
   <body>
-    <svg width="0" height="0" style="position: absolute">
-      <filter id="grain">
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.8"
-          numOctaves="3"
-          result="noise"
-        />
-        <feComponentTransfer in="noise">
-          <feFuncA type="linear" slope="0.1" />
-        </feComponentTransfer>
-        <!-- blend the noise onto the original element -->
-        <feBlend in="SourceGraphic" in2="noise" mode="overlay" />
-      </filter>
-    </svg>
-
-    <div id="intro">
-      <div id="ripple"></div>
-      <div class="gradient-layer"></div>
-      <div class="noise-layer"></div>
-    </div>
+    <!-- Main Content -->
     <h1 class="glitch" data-text="Sensorium">Sensorium</h1>
-
-    <div class="container">
+    <div class="panels">
       <div
-        class="panel active"
+        class="panel panel--active"
         style="background-image: url('/assets/one.jpeg')"
       >
-        <h3>Let the night melt on your skin</h3>
+        <h3 class="panel__caption">Let the night melt on your skin</h3>
       </div>
       <div class="panel" style="background-image: url('/assets/two.jpeg')">
-        <h3>Inhale the velvet hush</h3>
+        <h3 class="panel__caption">Inhale the velvet hush</h3>
       </div>
       <div class="panel" style="background-image: url('/assets/three.jpg')">
-        <h3>Where color tastes like sound</h3>
+        <h3 class="panel__caption">Where color tastes like sound</h3>
       </div>
       <div class="panel" style="background-image: url('/assets/four.jpeg')">
-        <h3>Ice clinks in slow motion</h3>
+        <h3 class="panel__caption">Ice clinks in slow motion</h3>
       </div>
       <div class="panel" style="background-image: url('/assets/five.jpeg')">
-        <h3>Fall into the glitter storm</h3>
+        <h3 class="panel__caption">Fall into the glitter storm</h3>
       </div>
     </div>
 
-    <script type="module" src="./main.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
